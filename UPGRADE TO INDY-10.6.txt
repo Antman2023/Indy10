@@ -1,0 +1,61 @@
+UPGRADE INDY10 vers INDY10.6 - Delphi 2007
+
+(https://www.indyproject.org/2013/04/23/indy-10-6-has-been-released/)
+=====================================================================
+
+1) Ouvrir l'IDE et desinstaller les composants Indy10 :
+	- menu Composants > Installer des packages 
+	- selectionner "Indy 10 Code Design Time", cliquer sur "Retirer"
+	- selectionner "Indy 10 Protocols Design Time", cliquer sur "Retirer"
+	- cliquer "OK" puis fermer l'IDE
+
+2) Virer les sources obsoletes :
+	- Ouvrir "C:\Program Files (x86)\CodeGear\RAD Studio\5.0\source\Indy"
+	- Renommer "Indy10" vers "Indy10.old"
+
+3) Virer les dcu obsoletes :
+	- Ouvrir "C:\Program Files (x86)\CodeGear\RAD Studio\5.0\lib"
+	- Renommer "Indy10" vers "Indy10.old"
+	- Ouvrir "C:\Program Files (x86)\CodeGear\RAD Studio\5.0\lib\debug"
+	- Renommer "Indy10" vers "Indy10.old"
+
+4) Virer les composants obsoletes :
+	- Ouvrir "C:\Program Files (x86)\CodeGear\RAD Studio\5.0\bin"
+	- Renommer les composants suivant vers "XXX.bpl.old" :
+		* dclIndyCore100.bpl, dclIndyProtocols100.bpl, IndyCore100.bpl, IndyProtocols100.bpl, IndySystem100.bpl
+
+5) Telecharger et installer "Toirtoise GIT 2.8.0" par default : 
+	https://download.tortoisegit.org/tgit/2.8.0.0/TortoiseGit-2.8.0.0-64bit.msi
+
+6) Cloner les sources d'Indy10.6 :
+	- Creer un repertoire par exemple, sur le bureau, "Indy10Prodels"
+	- Se rendre dans le repertoire precedemment cree, puis cliquer droit > GIT CLONE
+	- Coller l'URL suivante dans "URL" puis cliquer "OK":  https://github.com/flydev-fr/Indy10
+
+7) Compiler les composants :
+	- Ouvrir "INDY10.groupproj"
+	- Construire les projets dans cet ordre :
+		1- IndySystem100.dpk 
+		2- IndyCore100.dpk
+		3- IndyProtocols100.dpk 
+		4- dclIndyCore100.dpk
+		5- dclIndyProtocols100.dpk
+
+8) Installer les composants :
+	- Cliquer "droit" sur "dclIndyCore100.dpk" puis "Installer"
+	- Cliquer "droit" sur "dclIndyProtocols100.dpk" puis "Installer"
+
+9) Ajustement des chemins de l'IDE
+	- Ouvrir les options (Outils > Options > Options Delphi > Bibliotheque Win32) puis dans les "chemins de bibliotheque" rajouter :
+		* C:\Users\Public\Documents\RAD Studio\5.0\Indy10\Core
+		* C:\Users\Public\Documents\RAD Studio\5.0\Indy10\Protocols
+		* C:\Users\Public\Documents\RAD Studio\5.0\Indy10\System
+
+
+10) Si l'IDE n'est pas content :
+	- Copier les composants (*.bpl) suivants depuis "C:\Users\Public\Documents\RAD Studio\5.0\Bpl" dans "C:\Program Files (x86)\CodeGear\RAD Studio\5.0\bin" :
+		* dclIndyCore100.bpl, dclIndyProtocols100.bpl, IndyCore100.bpl, IndyProtocols100.bpl, IndySystem100.bpl
+
+
+
+Voila...
